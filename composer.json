@@ -1,0 +1,13 @@
+{
+    "name": "arhamlabs/api_response",
+    "description": "This package is a template used to create API responses which can be overwritten",
+    "type": "project",
+    "authors": [
+        {
+            "name": "rohanArhamLabs",
+            "email": "rohanlawande@arhamlabs.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
