@@ -11,7 +11,7 @@
     "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
-            "Arhamlabs\\ApiResponse\\": "vendor/arhamlabs/api_response/src"
+            "Arhamlabs\\ApiResponse\\": "src/"
         }
     },
     "require": {}
