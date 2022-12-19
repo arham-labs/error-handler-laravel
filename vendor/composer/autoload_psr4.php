@@ -6,4 +6,5 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Arhamlabs\\ApiResponse\\' => array($vendorDir . '/arhamlabs/api_response/src'),
 );

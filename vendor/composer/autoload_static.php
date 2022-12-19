@@ -6,6 +6,20 @@ namespace Composer\Autoload;
 
 class ComposerStaticInitbace2330f531ddfba2cc27ee66b20751
 {
+    public static $prefixLengthsPsr4 = array (
+        'A' => 
+        array (
+            'Arhamlabs\\ApiResponse\\' => 22,
+        ),
+    );
+
+    public static $prefixDirsPsr4 = array (
+        'Arhamlabs\\ApiResponse\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/arhamlabs/api_response/src',
+        ),
+    );
+
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
     );
@@ -13,6 +27,8 @@ class ComposerStaticInitbace2330f531ddfba2cc27ee66b20751
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
+            $loader->prefixLengthsPsr4 = ComposerStaticInitbace2330f531ddfba2cc27ee66b20751::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitbace2330f531ddfba2cc27ee66b20751::$prefixDirsPsr4;
             $loader->classMap = ComposerStaticInitbace2330f531ddfba2cc27ee66b20751::$classMap;
 
         }, null, ClassLoader::class);
