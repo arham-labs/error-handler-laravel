@@ -1,0 +1,18 @@
+{
+    "name": "arhamlabs/error-handler",
+    "description": "This package is a template used to create API responses which can be overwritten",
+    "type": "project",
+    "authors": [
+        {
+            "name": "ArhamLabs",
+            "email": "hello@arhamlabs.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "Arhamlabs\\ApiResponse\\": "vendor/arhamlabs/api_response/src"
+        }
+    },
+    "require": {}
+}
