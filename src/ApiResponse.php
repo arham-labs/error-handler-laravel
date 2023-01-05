@@ -14,7 +14,11 @@ class ApiResponse
     public $customUserInteractionPrimaryActionLabel;
     public $customUserInteractionSecondaryAction;
     public $customUserInteractionSecondaryActionLabel;
+    public $customData;
+    public $customErrors;
     public $isCustomResponse = false;
+    public $isCustomData = false;
+    public $isCustomErrors = false;
 
     /**
      * This function is provides an option for the user
@@ -29,6 +33,21 @@ class ApiResponse
         $this->customUserInteractionPrimaryActionLabel = $customUserInteractionPrimaryActionLabel;
         $this->customUserInteractionSecondaryAction = $customUserInteractionSecondaryAction;
         $this->customUserInteractionSecondaryActionLabel = $customUserInteractionSecondaryActionLabel;
+    }
+
+    /**
+     * This function is provides an option for the user
+     * to overwrite the default errors in the response.
+     */
+    public function setCustomErrors($errors) 
+    {
+        $this->isCustomErrors = true;
+        #Check if error is set to convert it into array
+        if (isset($errors) && !is_array($errors)) {
+            $this->customErrors = array("errors" => array($errors));
+        } else {
+            $this->customErrors = $errors;
+        }
     }
 
     /**
@@ -54,6 +73,11 @@ class ApiResponse
             $body["handling"]["secondaryAction"] = isset($this->customUserInteractionSecondaryAction) ? $this->customUserInteractionSecondaryAction : $body["handling"]["secondaryAction"];
 
             $body["handling"]["secondaryActionLabel"] = isset($this->customUserInteractionSecondaryActionLabel) ? $this->customUserInteractionSecondaryActionLabel : $body["handling"]["secondaryActionLabel"];
+        }
+
+        #Check if user has set any custom errors then overwrite the default error object
+        if ($this->isCustomErrors) {
+            $body["errors"] = $this->customErrors;
         }
 
         #Return response as a json
