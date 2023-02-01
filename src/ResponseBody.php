@@ -26,7 +26,7 @@ trait ResponseBody {
         #Set Common attributes 
         $this->message = $message;
         #Check if error is set to convert it into array
-        if (isset($errors) && !is_array($errors)) {
+        if (isset($errors) && is_string($errors)) {
             $errors = array("errors" => array($errors));
         }
         $this->errors = $errors;

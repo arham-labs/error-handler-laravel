@@ -84,3 +84,17 @@ The secondary action is an alternative action that a user can proceed with like 
 - ### ***secondaryActionLabel***
 
 The name on the widget that triggers the secondary action
+
+<br/>
+
+### ***Set Custom Error function:***
+
+Where the developer needs to override default errors execution for instance, if a developer is not using default request files for validation and need to validate inside a controller itself, in this situation they may have to overwrite the errors to the validator errors before throwing to the catch block. Here the set custom error function may be useful.
+
+> public function setCustomErrors($errors)
+
+<br/>
+
+- ### ***errors***
+
+The parameter passed to overwrite the default error, this can be either a string or an array (preferably validators errors object)
