@@ -43,7 +43,7 @@ class ApiResponse
     {
         $this->isCustomErrors = true;
         #Check if error is set to convert it into array
-        if (isset($errors) && !is_array($errors)) {
+        if (isset($errors) && is_string($errors)) {
             $this->customErrors = array("errors" => array($errors));
         } else {
             $this->customErrors = $errors;
