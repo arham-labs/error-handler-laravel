@@ -30,6 +30,9 @@ Developers have the option to enable notifications **(implements queues)** throu
 
 **Note: You may need to create a script to run queue (supervisor or cron jobs) in order for the notifications to work**
 
+for more information of queues refer laravel documentation for **queues and supervisor**
+> [https://laravel.com/docs/9.x/queues](https://laravel.com/docs/9.x/queues)
+
 <br/>
 
 ## **Usage:**
