@@ -41,7 +41,7 @@ After installing the package, you may need to import the package in the file you
 
 *For using the package refer the image given below -*
 
-![Code Block](assets/example-code.JPG?raw=true "Title")
+![Code Block](assets/example-code-1.JPG?raw=true "Title")
 
 <br/>
 
