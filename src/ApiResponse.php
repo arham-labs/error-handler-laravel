@@ -1,8 +1,14 @@
 <?php
 namespace Arhamlabs\ApiResponse;
 
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Route;
+
 use Arhamlabs\ApiResponse\ResponseBody;
+
+#Job Import
+use Arhamlabs\ApiResponse\Jobs\ApiResponseNotificationJob;
 
 class ApiResponse
 {
@@ -78,6 +84,23 @@ class ApiResponse
         #Check if user has set any custom errors then overwrite the default error object
         if ($this->isCustomErrors) {
             $body["errors"] = $this->customErrors;
+        }
+
+        #Get Config flag to check if notification if enabled for the project
+        $isNotificationEnabled = config('apiResponse.enable_notification');
+        
+        #If status code is 500 and notification is set to true in config dispatch to Notification Job
+        if ($statusCode == 500 && $isNotificationEnabled) {
+            #Get Config for which of the notifications to send
+            $isSlackNotificationEnabled = config('apiResponse.notification_type.slack');
+            $isEmailNotificationEnabled = config('apiResponse.notification_type.email');
+
+            #Dispatch to job with the notification object
+            $notificationObject = array();
+            $notificationObject["is_slack_notification_enabled"] = $isSlackNotificationEnabled;
+            $notificationObject["is_email_notification_enabled"] = $isEmailNotificationEnabled;
+            $notificationObject["body"] = json_encode($body);
+            ApiResponseNotificationJob::dispatch($notificationObject);
         }
 
         #Return response as a json
