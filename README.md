@@ -5,14 +5,34 @@ This package is a template used to create API responses which can be overwritten
 
 <br/>
 
-## Installation:
+## **Installation:**
 
 In order to install the package use the command specified below - 
 > composer require arhamlabs/error-handler
 
 <br/>
 
-## Usage:
+In **config/app.php** append the class in the providers array to publish the package service provider
+> Arhamlabs\ApiResponse\ApiResponseServiceProvider::class
+
+*Refer the image given below -*
+
+![Provider Image](assets/config-app-provider.JPG?raw=true "Title")
+
+To publish the packages resources and configs run the command below
+> php artisan vendor:publish --provider="Arhamlabs\ApiResponse\ApiResponseServiceProvider"
+
+<br/>
+
+### **Notifications:** ###
+
+Developers have the option to enable notifications **(implements queues)** through **emails and slack channels** in case of a code breakage or server errors. Once you have published the package resource you can see a new config file being created **(config/apiResponse.php)** to customize your notification options. You can open the config file which will have an array of params that will be required to enable notifications.
+
+**Note: You may need to create a script to run queue (supervisor or cron jobs) in order for the notifications to work**
+
+<br/>
+
+## **Usage:**
 
 After installing the package, you may need to import the package in the file you want to use. Use the following import syntax
 > use Arhamlabs\ApiResponse\ApiResponse;
@@ -21,8 +41,9 @@ After installing the package, you may need to import the package in the file you
 
 *For using the package refer the image given below -*
 
-![Code Block](/assets/example-code.JPG?raw=true "Title")
+![Code Block](assets/example-code.JPG?raw=true "Title")
 
+<br/>
 
 ### ***Get Response function:***
 
