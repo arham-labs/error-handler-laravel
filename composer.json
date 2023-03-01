@@ -14,5 +14,7 @@
             "Arhamlabs\\ApiResponse\\": "src/"
         }
     },
-    "require": {}
+    "require": {
+        "arhamlabs/notification_handler": "dev-main"
+    }
 }

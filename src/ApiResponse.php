@@ -8,7 +8,9 @@ use Illuminate\Support\Facades\Route;
 use Arhamlabs\ApiResponse\ResponseBody;
 
 #Job Import
-use Arhamlabs\ApiResponse\Jobs\ApiResponseNotificationJob;
+// use Arhamlabs\ApiResponse\Jobs\ApiResponseNotificationJob;
+use Arhamlabs\NotificationHandler\Jobs\MailNotificationHandlerJob;
+use Arhamlabs\NotificationHandler\Jobs\SlackNotificationHandlerJob;
 
 class ApiResponse
 {
@@ -87,20 +89,29 @@ class ApiResponse
         }
 
         #Get Config flag to check if notification if enabled for the project
-        $isNotificationEnabled = config('apiResponse.enable_notification');
+        $isNotificationEnabled = config('alNotificationConfig.enable_notification');
+
+        $statusCodeArray = config('apiResponse.notifiable_status_codes');
         
         #If status code is 500 and notification is set to true in config dispatch to Notification Job
-        if ($statusCode == 500 && $isNotificationEnabled) {
+        if (in_array($statusCode, $statusCodeArray) && $isNotificationEnabled) {
             #Get Config for which of the notifications to send
-            $isSlackNotificationEnabled = config('apiResponse.notification_type.slack');
-            $isEmailNotificationEnabled = config('apiResponse.notification_type.email');
+            $isSlackNotificationEnabled = config('alNotificationConfig.notification_type.slack');
+            $isEmailNotificationEnabled = config('alNotificationConfig.notification_type.email');
 
             #Dispatch to job with the notification object
             $notificationObject = array();
-            $notificationObject["is_slack_notification_enabled"] = $isSlackNotificationEnabled;
-            $notificationObject["is_email_notification_enabled"] = $isEmailNotificationEnabled;
             $notificationObject["body"] = json_encode($body);
-            ApiResponseNotificationJob::dispatch($notificationObject);
+
+            #Check if slack is enabled
+            if ($isSlackNotificationEnabled) {
+                SlackNotificationHandlerJob::dispatch($notificationObject);
+            }
+
+            #Check if email is enabled
+            if ($isEmailNotificationEnabled) {
+                MailNotificationHandlerJob::dispatch($notificationObject);
+            }
         }
 
         #Return response as a json
