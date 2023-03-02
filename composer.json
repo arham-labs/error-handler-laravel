@@ -4,8 +4,8 @@
     "type": "project",
     "authors": [
         {
-            "name": "ArhamLabs",
-            "email": "hello@arhamlabs.com"
+            "name": "Rohan Lawande",
+            "email": "rohanlawande@arhamlabs.com"
         }
     ],
     "minimum-stability": "dev",
@@ -15,6 +15,7 @@
         }
     },
     "require": {
-        "arhamlabs/notification_handler": "dev-main"
-    }
+        "arhamlabs/notification_handler": "0.*"
+    },
+    "prefer-stable": true
 }

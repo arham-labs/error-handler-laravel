@@ -27,8 +27,8 @@ class ApiResponseServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/../config/apiResponse.php' => config_path('apiResponse.php'),
-            __DIR__.'/../resources/views' => resource_path('views/vendor/apiResponse'),
+            __DIR__.'/../config/apiResponse.php' => config_path('apiResponse.php')
+            // __DIR__.'/../resources/views' => resource_path('views/vendor/apiResponse'),
             //, __DIR__.'/../Jobs/ApiResponseNotificationJob.php' => app_path("Jobs/ApiResponseNotificationJob.php"),
         ]);
     }
