@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a36d34553d9f1164b2562719e0b854c7",
+    "content-hash": "cc2d4e6f6f11199e570c266251265a5d",
     "packages": [
         {
             "name": "arhamlabs/notification_handler",

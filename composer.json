@@ -14,6 +14,13 @@
             "Arhamlabs\\ApiResponse\\": "src/"
         }
     },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Arhamlabs\\ApiResponse\\ApiResponseServiceProvider"
+            ]
+        }
+    },
     "require": {
         "arhamlabs/notification_handler": "0.*"
     },
