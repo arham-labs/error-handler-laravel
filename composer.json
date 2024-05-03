@@ -22,7 +22,7 @@
         }
     },
     "require": {
-        "arhamlabs/notification_handler": "0.*"
+        "arhamlabs/notification_handler": "1.*"
     },
     "prefer-stable": true
 }
